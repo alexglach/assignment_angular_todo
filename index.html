@@ -1,6 +1,6 @@
 <html ng-app="toDoApp" >
   <head>
-    <title>Directives!</title>
+    <title>ToDo!</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <!--Lo-Dash -->
@@ -11,11 +11,30 @@
   </head>
 
   <body ng-controller= "TodoCtrl">
-    <tr>
-      <td>{{item.text}}</td>
-      <td>{{item.dueDate | date}}</td>
-      <td ng-if="item.completed">Not Completed. One day this will be a checkbox.</td>
-    </tr>
+
+    <form name="new-todo" ng-submit="submitForm()">
+      <label for="name">Task Name:</label>
+      <input type="text" name="name" ng-model="formData.name">
+      <label for="dueDate">Due Date:</label>
+      <input type="date" name="dueDate" ng-model="formData.dueDate">
+      <input type=submit>
+    </form>
+    <table>
+      <tr>
+        <th>Task</th>
+        <th>Due Date</th>
+        <th>Completed</th>
+        <th>Delete</th>
+      </tr>
+      <tr ng-repeat="item in items">
+        <td>{{item.text}}</td>
+        <td>{{item.dueDate | date}}</td>
+        <td><input type="checkbox" ng-model="item.completed"></td>
+        <td><span ng-click="deleteItem(item)">X</span></td>
+      </tr>
+    </table>
+    <input type="submit" value="Clear Completed" ng-click="clearCompleted()">
+    <p>{{items}}</p>
 
   </body>
 </html>
