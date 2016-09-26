@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="app.js"></script>
     <script src="filters/hidecompleted.js"></script>
+    <script src="directives/todoitem.js"></script>
   </head>
 
   <body ng-controller= "TodoCtrl">
@@ -27,11 +28,8 @@
         <th>Completed</th>
         <th>Delete</th>
       </tr>
-      <tr ng-repeat="item in items | hideCompletedFilter:hideCompleted">
-        <td>{{item.text}}</td>
-        <td>{{item.dueDate | date}}</td>
-        <td><input type="checkbox" ng-model="item.completed"></td>
-        <td><span ng-click="deleteItem(item)">X</span></td>
+      <tr ng-repeat="item in items | hideCompletedFilter:hideCompleted" to-do-item item="item" delete-item="deleteItem(item)" >
+
       </tr>
     </table>
     <input type="submit" value="Clear Completed" ng-click="clearCompleted()">

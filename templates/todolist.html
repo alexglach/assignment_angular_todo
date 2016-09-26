@@ -1,0 +1,6 @@
+<tr>
+  <td>{{item.text}}</td>
+  <td>{{item.dueDate | date}}</td>
+  <td><input type="checkbox" ng-model="item.completed"></td>
+  <td><span ng-click="deleteItem({item: item})">X</span></td>
+</tr>
