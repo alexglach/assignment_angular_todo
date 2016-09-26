@@ -12,6 +12,8 @@ app.controller("TodoCtrl", ["$scope", "$window", "Item", function($scope, $windo
     $scope.formData = {};
   };
 
+  $scope.setFiler = "None";
+
   $scope.deleteItem = function(item){
     Item.deleteItem(item)
   };
