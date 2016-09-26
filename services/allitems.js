@@ -21,7 +21,7 @@ app.factory("Item", [function() {
         return item.completed;
       });
       for (var i = 0; i < toBeDeleted.length; i++) {
-        deleteItem(toBeDeleted[i]);
+        this.deleteItem(toBeDeleted[i]);
       }
     }
   }

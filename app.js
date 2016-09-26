@@ -2,9 +2,7 @@ var app = angular.module("toDoApp",[])
 
 app.controller("TodoCtrl", ["$scope", "$window", "Item", function($scope, $window, Item) {
  
-  $scope.items = function() {
-    console.log("DSADS")
-  }
+  $scope.items = Item.allItems();
 
   $scope.submitForm = function(){
     var newItem = {};
@@ -16,18 +14,25 @@ app.controller("TodoCtrl", ["$scope", "$window", "Item", function($scope, $windo
 
   $scope.deleteItem = function(item){
     Item.deleteItem(item)
-  }
+  };
 
   $scope.clearCompleted = function(){
     Item.clearCompleted();
-  }
-
-  $scope.filterText = "Hide Completed"
+  };
 
   $scope.hideCompleted = false;
 
   $scope.toggleHideCompleted = function() {
     $scope.hideCompleted = !$scope.hideCompleted
+  };
+
+  $scope.oneCompleted = function(){
+    for (var i = 0; i < $scope.items.length; i++) {
+      if ($scope.items[i].completed === true) {
+        return true;
+      }
+    }
+    return false;
   }
 
 }])

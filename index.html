@@ -37,10 +37,20 @@
 
       </tr>
     </table>
-    <input type="submit" value="Clear Completed" ng-click="clearCompleted()">
-    <input type="submit" ng-if= "hideCompleted" value="Show All" ng-click="toggleHideCompleted()">
-    <input type="submit" ng-if= "!hideCompleted" value="Hide Completed" ng-click="toggleHideCompleted()">
-    <p>{{items}}</p>
+    <div ng-show="oneCompleted()">
+      <input type="submit" value="Clear Completed" ng-click="clearCompleted()">
+      <input type="submit" ng-if= "hideCompleted" value="Show All" ng-click="toggleHideCompleted()">
+      <input type="submit" ng-if= "!hideCompleted" value="Hide Completed" ng-click="toggleHideCompleted()">
+    </div>
+    <select ng-model="setFilter">
+      <option value="Completed on Top">Completed on Top</option>
+      <option value="Completed on Bottom">Completed on Bottom</option>
+      <option value="Due Date Descending">Due Date Descending</option>
+      <option value="Due Date Ascending">Due Date Ascending</option>
+      <option value="None">None</option>
+    </select>
+    <p>{{setFilter}}</p>
+
 
   </body>
 </html>
