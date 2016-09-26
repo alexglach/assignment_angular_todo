@@ -2,7 +2,7 @@ app.filter("hideCompletedFilter", function() {
   return function(items, toggle) {
     var filteredCompleted = []
     if(!toggle) {
-      return false;
+      return items
     }
     else {
       for(var i = 0; i < items.length; i++) {
