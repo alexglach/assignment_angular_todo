@@ -1,0 +1,21 @@
+<html ng-app="toDoApp" >
+  <head>
+    <title>Directives!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!--Lo-Dash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.js"></script>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller= "TodoCtrl">
+    <tr>
+      <td>{{item.text}}</td>
+      <td>{{item.dueDate | date}}</td>
+      <td ng-if="item.completed">Not Completed. One day this will be a checkbox.</td>
+    </tr>
+
+  </body>
+</html>
