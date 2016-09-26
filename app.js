@@ -29,4 +29,13 @@ app.controller("TodoCtrl", ["$scope", "$window",function($scope, $window) {
       $scope.deleteItem(toBeDeleted[i]);
     }
   }
+
+  $scope.filterText = "Hide Completed"
+
+  $scope.hideCompleted = false;
+
+  $scope.toggleHideCompleted = function() {
+    $scope.hideCompleted = !$scope.hideCompleted
+  }
+
 }])

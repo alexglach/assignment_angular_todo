@@ -8,6 +8,7 @@
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="app.js"></script>
+    <script src="filters/hidecompleted.js"></script>
   </head>
 
   <body ng-controller= "TodoCtrl">
@@ -26,7 +27,7 @@
         <th>Completed</th>
         <th>Delete</th>
       </tr>
-      <tr ng-repeat="item in items">
+      <tr ng-repeat="item in items | hideCompletedFilter:hideCompleted">
         <td>{{item.text}}</td>
         <td>{{item.dueDate | date}}</td>
         <td><input type="checkbox" ng-model="item.completed"></td>
@@ -34,6 +35,8 @@
       </tr>
     </table>
     <input type="submit" value="Clear Completed" ng-click="clearCompleted()">
+    <input type="submit" ng-if= "hideCompleted" value="Show All" ng-click="toggleHideCompleted()">
+    <input type="submit" ng-if= "!hideCompleted" value="Hide Completed" ng-click="toggleHideCompleted()">
     <p>{{items}}</p>
 
   </body>
